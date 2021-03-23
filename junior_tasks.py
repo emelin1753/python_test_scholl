@@ -64,14 +64,19 @@ def appearance(intervals):
 	# из тестов сделан вывод, что преподаватель один, а студентов может быть несколько, поэтому 
 	# будет два вложенных цикла с наложением отрезков
 	for i in range(0, len_tutor, 2):
+		# работаем в рамках времени преподавателя, ограниченного уроком
 		start_tutor = max(tutor_list[i], start_lesson) 
 		end_tutor = min(tutor_list[i+1], end_lesson)
+		# начало текущего интервала
 		tek_time = start_tutor
 
 		for j in range(0, len_pupil, 2):
 			if pupil_list[j+1] < tek_time:
+				# студент уже вышел, до начала интервала
 				continue
+			
 			start_pupil = max(tek_time, pupil_list[j])
+
 			if start_pupil<end_tutor:
 				end_pupil = min(pupil_list[j+1], end_tutor)
 				if start_pupil<end_pupil:
