@@ -69,6 +69,8 @@ def appearance(intervals):
 		tek_time = start_tutor
 
 		for j in range(0, len_pupil, 2):
+			if pupil_list[j+1] < tek_time:
+				continue
 			start_pupil = max(tek_time, pupil_list[j])
 			if start_pupil<end_tutor:
 				end_pupil = min(pupil_list[j+1], end_tutor)
